@@ -1748,8 +1748,15 @@ Oktell = (function(){
             sendOktell(method,params);
           } else {
             sendOktell(method,params,function(data){
-              var r = data.errorCode ? getReturnObj(data.result,data, data.errorCode) : getReturnObj(data.result,data, 1103, ' ' + method);
-              callFunc(callbackFn, r);
+              if (method === "gettotalqueue") {
+                const correctData = { ...data };
+                correctData.correctQueue = correctData.result
+                var cr = correctData.errorCode ? getReturnObj(correctData.result,correctData, correctData.errorCode) : getReturnObj(correctData.result,correctData, 1103, ' ' + method);
+                callFunc(callbackFn, cr);
+              } else {
+                var r = data.errorCode ? getReturnObj(data.result,data, data.errorCode) : getReturnObj(data.result,data, 1103, ' ' + method);
+                callFunc(callbackFn, r);
+              }
             });
           }
         }
@@ -4781,6 +4788,8 @@ Oktell = (function(){
               }
 
               sendOktell('getversion', {showalloweddbstoredprocs:1}, function(data){
+
+                console.log("Data: ", data)
 
                 if ( data.result ) {
                   oktellInfo.oktellDated = data.version.dated;
