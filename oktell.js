@@ -4789,8 +4789,6 @@ Oktell = (function(){
 
               sendOktell('getversion', {showalloweddbstoredprocs:1}, function(data){
 
-                console.log("Data: ", data)
-
                 if ( data.result ) {
                   oktellInfo.oktellDated = data.version.dated;
                   oktellInfo.oktellBuild = data.version.build;
