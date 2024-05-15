@@ -5186,7 +5186,7 @@ Oktell = (function(){
       each(numbers, function(u){
         nums[u.number] = u;
       });
-      return nums;
+      return [...nums];
     };
 
     /**
