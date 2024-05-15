@@ -5187,7 +5187,7 @@ Oktell = (function(){
         nums[u.number] = u;
       });
 
-      return cloneObject(nums) || {};
+      return {...nums};
     };
 
     /**
