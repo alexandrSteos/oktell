@@ -5187,8 +5187,7 @@ Oktell = (function(){
         nums[u.number] = u;
       });
 
-      console.log(nums, typeof nums, Array.isArray(nums))
-      return nums;
+      return cloneObject(nums) || {};
     };
 
     /**
